@@ -452,7 +452,7 @@ class MainWindow(QMainWindow):
         self.stack.setCurrentIndex(0)
 
     def _create_button(self, text, callback=None, style=Style.BUTTON_PRIMARY, enabled=True):
-        btn = AnimatedButton(text)
+        btn = QPushButton(text)
         btn.setStyleSheet(style)
         if callback:
             btn.clicked.connect(callback)
@@ -1396,8 +1396,8 @@ class MainWindow(QMainWindow):
             self.stack.setCurrentIndex(0)
 
     def _create_profile_sidebar(self):
-        """Creates the profile sidebar widget with scrollable content, including personality analysis."""
-        # Outer container
+        """Creates the profile sidebar widget with a fixed header and a vertically scrollable body."""
+        # ——— 1) Outer container ———
         self.sidebar = QWidget()
         self.sidebar.setFixedWidth(300)
         self.sidebar.setStyleSheet(Style.SIDEBAR_STYLE)
@@ -1409,22 +1409,16 @@ class MainWindow(QMainWindow):
         shadow.setColor(QColor(0, 0, 0, 160))
         self.sidebar.setGraphicsEffect(shadow)
 
-        # Scroll area
-        scroll = QScrollArea(self.sidebar)
-        scroll.setWidgetResizable(True)
-        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        scroll.setFrameShape(QFrame.NoFrame)
+        # ——— 2) Layout for sidebar ———
+        outer = QVBoxLayout(self.sidebar)
+        outer.setContentsMargins(0, 0, 0, 0)
+        outer.setSpacing(0)
 
-        # Content widget & layout
-        content = QWidget()
-        content.setStyleSheet("background: transparent;")
-        scroll.setWidget(content)
-        layout = QVBoxLayout(content)
-        layout.setContentsMargins(10, 10, 10, 10)
-        layout.setSpacing(15)
-
-        # Close button
+        # ——— 3) Fixed header with close button ———
+        header = QWidget()
+        hdr_layout = QHBoxLayout(header)
+        hdr_layout.setContentsMargins(8, 8, 8, 8)
+        hdr_layout.addStretch()
         close_btn = QPushButton("×")
         close_btn.setFixedSize(30, 30)
         close_btn.setStyleSheet(f"""
@@ -1439,12 +1433,28 @@ class MainWindow(QMainWindow):
             }}
         """)
         close_btn.clicked.connect(self._toggle_profile_sidebar)
-        hdr = QHBoxLayout()
-        hdr.addStretch()
-        hdr.addWidget(close_btn)
-        layout.addLayout(hdr)
+        hdr_layout.addWidget(close_btn)
+        outer.addWidget(header, 0)
 
-        # Player portrait (240×240)
+        # ——— 4) Scroll area (vertical only) ———
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        scroll.setFrameShape(QFrame.NoFrame)
+        outer.addWidget(scroll, 1)
+
+        # ——— 5) Scrollable content widget ———
+        content = QWidget()
+        content.setStyleSheet("background: transparent;")
+        content.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        scroll.setWidget(content)
+
+        layout = QVBoxLayout(content)
+        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(15)
+
+        # ——— 6) Player portrait & name ———
         self.player_portrait = QLabel()
         self.player_portrait.setFixedSize(240, 240)
         self.player_portrait.setAlignment(Qt.AlignCenter)
@@ -1453,36 +1463,39 @@ class MainWindow(QMainWindow):
         )
         layout.addWidget(self.player_portrait, alignment=Qt.AlignHCenter)
 
-        # Player name
         self.player_name = QLabel()
         self.player_name.setFont(QFont(Style.BODY_FONT.family(), 14, QFont.Bold))
         self.player_name.setAlignment(Qt.AlignCenter)
         self.player_name.setStyleSheet(f"color: {Style.TEXT}; margin-top:8px;")
+        self.player_name.setWordWrap(True)
+        self.player_name.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         layout.addWidget(self.player_name, alignment=Qt.AlignHCenter)
 
-        # Personality analysis
+        # ——— 7) Personality analysis ———
         pers_lbl = QLabel("Personality")
         pers_lbl.setFont(QFont(Style.BODY_FONT.family(), 12, QFont.Medium))
         pers_lbl.setStyleSheet(f"color: {Style.PRIMARY}; margin-top:12px;")
         layout.addWidget(pers_lbl)
+
         self.personality_analysis = QLabel()
         self.personality_analysis.setFont(Style.SMALL_FONT)
         self.personality_analysis.setStyleSheet(f"color: {Style.TEXT};")
         self.personality_analysis.setWordWrap(True)
+        self.personality_analysis.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Preferred
+        )
         layout.addWidget(self.personality_analysis)
 
-        # Separator
+        # ——— 8) Separator ———
         sep0 = QFrame()
         sep0.setFrameShape(QFrame.HLine)
         sep0.setFixedHeight(1)
         sep0.setStyleSheet(f"background-color: {Style.PRIMARY}; border:none;")
         layout.addWidget(sep0)
 
-        # Stats bar sizing constants (we’ll scale floats ×10 → ints 0–100)
-        BAR_WIDTH = 150
-        BAR_HEIGHT = 24
-
-        # Player stats (bars right-aligned & uniform)
+        # ——— 9) Player stats bars ———
+        BAR_WIDTH, BAR_HEIGHT = 150, 24
         self.player_stats = {}
         for stat in ["bravery", "curiosity", "empathy", "communication", "trust"]:
             lbl = QLabel(stat.capitalize())
@@ -1491,9 +1504,8 @@ class MainWindow(QMainWindow):
             lbl.setFixedWidth(100)
 
             bar = QProgressBar()
-            # scale 0.0–10.0 to 0–100 so we can display one decimal place
             bar.setRange(0, 100)
-            bar.setFormat("")  # we’ll set this dynamically when updating
+            bar.setFormat("")  
             bar.setFixedSize(BAR_WIDTH, BAR_HEIGHT)
             bar.setStyleSheet(Style.STAT_BAR_STYLE)
 
@@ -1506,14 +1518,14 @@ class MainWindow(QMainWindow):
             layout.addLayout(row)
             self.player_stats[stat] = bar
 
-        # Separator
+        # ——— 10) Separator ———
         sep1 = QFrame()
         sep1.setFrameShape(QFrame.HLine)
         sep1.setFixedHeight(1)
         sep1.setStyleSheet(f"background-color: {Style.PRIMARY}; border:none;")
         layout.addWidget(sep1)
 
-        # Companion portrait & name (240×240)
+        # ——— 11) Companion portrait & name ———
         self.companion_portrait = QLabel()
         self.companion_portrait.setFixedSize(240, 240)
         self.companion_portrait.setAlignment(Qt.AlignCenter)
@@ -1526,15 +1538,22 @@ class MainWindow(QMainWindow):
         self.companion_name.setFont(QFont(Style.BODY_FONT.family(), 14, QFont.Bold))
         self.companion_name.setAlignment(Qt.AlignCenter)
         self.companion_name.setStyleSheet(f"color: {Style.TEXT}; margin-top:8px;")
+        self.companion_name.setWordWrap(True)
+        self.companion_name.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         layout.addWidget(self.companion_name, alignment=Qt.AlignHCenter)
 
+        # ——— 12) Companion description ———
         self.companion_desc = QLabel()
         self.companion_desc.setFont(Style.SMALL_FONT)
         self.companion_desc.setStyleSheet(f"color: {Style.TEXT};")
         self.companion_desc.setWordWrap(True)
+        self.companion_desc.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Preferred
+        )
         layout.addWidget(self.companion_desc)
 
-        # Companion stats (also scaled 0–100)
+        # ——— 13) Companion stats bars ———
         self.companion_stats = {}
         for stat in ["trust", "fear", "affection"]:
             lbl = QLabel(stat.capitalize())
@@ -1559,22 +1578,17 @@ class MainWindow(QMainWindow):
 
         layout.addStretch()
 
-        # Nest scroll into sidebar
-        outer = QVBoxLayout(self.sidebar)
-        outer.setContentsMargins(0, 0, 0, 0)
-        outer.addWidget(scroll)
-
-        # Overlay & animation setup
+        # ——— 14) Overlay & animation setup ———
         self.sidebar_overlay = QWidget(self.sidebar.parent())
         self.sidebar_overlay.setStyleSheet(Style.OVERLAY_STYLE)
         self.sidebar_overlay.hide()
+
         self.sidebar_animation = QPropertyAnimation(self.sidebar, b"pos")
         self.sidebar_animation.setDuration(300)
         self.sidebar_animation.setEasingCurve(QEasingCurve.OutCubic)
 
         return self.sidebar, self.sidebar_overlay
 
-    
     def _toggle_profile_sidebar(self):
         """Toggles the profile sidebar visibility"""
         if not hasattr(self, 'sidebar'):
