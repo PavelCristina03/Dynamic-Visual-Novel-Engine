@@ -25,7 +25,6 @@ Together, these agents create a closed-loop pipeline: the player makes a choice,
 -   **Fully Dynamic Content**: No pre-authored story beats—every line of dialogue and illustration is generated in real time.
 -   **Adaptive Story Profiles**: Player choices feed into a dynamic profile that shapes character dialogue, visual style, and branching weights.
 -   **Modular Agent Architecture**: Add, remove, or extend agents with minimal changes to the core engine.
--   **Dual Interfaces**: Choose between a lightweight CLI mode (`--mode cli`) for rapid prototyping or a full-featured PySide6 GUI (`ui.py`) for a polished desktop experience.
 -   **Configurable & Extensible**: Nearly every aspect (models, caching, retry logic, file paths) is set via environment variables and JSON schemas.
 
 ---
@@ -54,14 +53,18 @@ Follow these steps to get up and running:
     ```
 2. **Configure**
 
+    - Go to https://platform.openai.com/ and log in (or sign up).
+    - Click your avatar in the top-right corner and select API Keys.
+    - Hit + Create new secret key, give it a name (e.g. “Dev Key”), and click Create.
+    - Copy the generated key immediately (it’s shown only once!)
     - Open `.env` and set your `OPENAI_API_KEY`.
-    - (Optional) Adjust other settings such as log levels, file paths, and model parameters.
 
 3. **Run**
 
     python ui.py
 
 4. **Play & Extend**
+
     - Modify or add agents in the `agents/` directory.
     - Tweak JSON schemas or default prompts to shape narrative style.
 
@@ -91,20 +94,14 @@ See `.env.example` for the full list of options.
 │   ├── premise_agent.py
 │   ├── profiling_agent.py
 │   └── story_agent.py
-├── game_state.py             # Persistent game state & save/load
+├── game/
+│   ├── game_state.py         # Persistent game state & save/load
+├── config/                   # Resources and setup info
+├── generated_images/
+├── character_portraits/
 ├── main.py                   # Engine entry point and CLI
 ├── ui.py                     # PySide6 GUI implementation
-├── requirements.txt          # Python dependencies
 └── .env.example              # Environment variable template
 ```
-
----
-
-## 🤝 Contributing & License
-
-Contributions are welcome! Please open issues and submit pull requests.  
-Licensed under the MIT License.
-
----
 
 © 2025 Dynamic Visual Novel Engine Project
