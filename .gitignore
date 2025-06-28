@@ -1,0 +1,53 @@
+# ─── Python Bytecode & Cache ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ─── Virtual Environments ────────────────────────────────────────────────────
+venv/
+myenv/
+env/
+ENV/
+.venv/
+
+# ─── Environment Files ───────────────────────────────────────────────────────
+# Ignore actual .env but keep the example
+.env
+!.env.example
+
+# ─── Application Artifacts ──────────────────────────────────────────────────
+# Save files and logs
+savegame.json
+*.log
+
+# Generated images & caches
+character_portraits/
+generated_images/
+archive/
+
+# ─── Testing & Coverage ─────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ─── Type Checking ───────────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# ─── IDE / Editor Settings ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ─── macOS & Windows ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Other ───────────────────────────────────────────────────────────────────
+*.egg-info/
+dist/
+build/

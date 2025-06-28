@@ -1,0 +1,228 @@
+{
+    "world_data": {
+        "world_name": "Aurelion",
+        "world_overview": "Aurelion is a vast, ancient realm sculpted by celestial storms and mortal ambition. For centuries, its high mountain spires were said to echo with starfire, while the lowlands held endless plains of luminescent grasses. Kingdoms rose and fell beneath twin moons, and whispers of an ancient prophecy lie hidden in long-forgotten temples. Even now, five key locations hold fragments of that prophecy, each drawing adventurers with promises of power and peril.",
+        "key_locations": [
+            {
+                "location_name": "Starfall Citadel",
+                "subareas": [
+                    {
+                        "name": "Celestial Gate",
+                        "description": "A pair of arched obsidian pillars inlaid with silver runes, marking the entrance to Starfall Citadel. Every night, streaks of meteor-fire dance across the gate, bathing the courtyard in ghostly light."
+                    },
+                    {
+                        "name": "Emberkeep Halls",
+                        "description": "Inside the citadel’s great hall, towering statues of fallen kings stand sentinel. Flickering braziers cast molten shadows on stone pillars carved with constellations thought lost to time."
+                    }
+                ]
+            },
+            {
+                "location_name": "Ivorywood Forest",
+                "subareas": [
+                    {
+                        "name": "Moonlit Glade",
+                        "description": "A ring of ancient oaks whose pale bark glows under moonlight. Rumor says the glade is protected by ethereal spirits who whisper forgotten secrets to mortals who dare listen."
+                    },
+                    {
+                        "name": "Silverstream Brook",
+                        "description": "A crystal-clear river winding through Ivorywood. Its waters shimmer like liquid starlight, and travelers claim fish here possess strange luminescent scales that never dim."
+                    },
+                    {
+                        "name": "Fungal Hollow",
+                        "description": "A cavern at the forest’s edge where phosphorescent mushrooms bloom in bioluminescent clusters. The air is thick with the sweet scent of spore-laced fog and the low hum of unseen creatures."
+                    }
+                ]
+            },
+            {
+                "location_name": "Obsidian Wastes",
+                "subareas": [
+                    {
+                        "name": "Broken Rampart",
+                        "description": "Once a mighty fortress wall of black glass-stone, now shattered into jagged shards. The winds here carry whispers of ancient battles and fallen heroes."
+                    },
+                    {
+                        "name": "Shattered Basin",
+                        "description": "A sun-scorched valley of glassy sand dunes. Travelers say they’ve seen oases that vanish as soon as you draw near—and shadows that move on their own."
+                    }
+                ]
+            },
+            {
+                "location_name": "Azure Peaks",
+                "subareas": [
+                    {
+                        "name": "Frostspire Summit",
+                        "description": "A jagged mountain peak where perpetual snow glimmers under a sapphire sky. Ancient shrines etched into the ice walls speak of gods who once walked this peak."
+                    },
+                    {
+                        "name": "Cloudreach Pass",
+                        "description": "A narrow mountain pass shrouded in roiling mist. The path winds precariously along sheer cliffs, said to test the faith of any pilgrim attempting the pilgrimage here."
+                    }
+                ]
+            },
+            {
+                "location_name": "Ebonsea Coast",
+                "subareas": [
+                    {
+                        "name": "Leviathan’s Perch",
+                        "description": "A rocky outcropping jutting into the black waves, where colossal sea serpents are rumored to lair. The sea spray tastes of brine and old magic."
+                    },
+                    {
+                        "name": "Siren’s Cove",
+                        "description": "A hidden cove whose lilted songs echo across moonlit tides. Fishermen speak of voices that lure sailors to shipwreck, and many small boats vanish without trace."
+                    }
+                ]
+            }
+        ],
+        "factions": [
+            {
+                "name": "Order of the Starforged",
+                "description": "Knights clad in silver and cobalt armor, devoted to protecting Aurelion’s celestial lore. They spend decades studying fallen meteorites to glean hidden magic from the stars."
+            },
+            {
+                "name": "Ivorywood Sentinels",
+                "description": "Druidic guardians of the Ivorywood Forest. Their bodies are tattooed with ancient glyphs, and they communicate with forest spirits through melodic chants that echo among the trees."
+            },
+            {
+                "name": "Obsidian Syndicate",
+                "description": "A ruthless network of mercenaries and warlords who scavenge the Obsidian Wastes for lost relics. Their executioners brand victims with black-iron runes that scorch like embers."
+            },
+            {
+                "name": "Skybound Coleaderships",
+                "description": "An alliance of noble houses that command trading winds along the Azure Peaks. They transport rare frost-crystals down to coastal cities, funneling wealth through their sky-lanes."
+            }
+        ]
+    },
+
+    "current_location": {
+        "location_name": "Starfall Citadel",
+        "subarea_name": "Celestial Gate",
+        "subarea_description": "A pair of arched obsidian pillars inlaid with silver runes, marking the entrance to Starfall Citadel. Every night, streaks of meteor-fire dance across the gate, bathing the courtyard in ghostly light."
+    },
+
+    "mysteries": [
+        {
+            "id": "m1",
+            "prompt": "Why does Starfall Citadel glow brighter on nights of a blue moon?",
+            "answer": "An ancient artifact beneath the citadel’s foundations resonates in harmony with lunar cycles, channeling energy from the meteor showers.",
+            "twist": "That artifact holds the soul of a fallen star-queen, waiting to be reborn."
+        },
+        {
+            "id": "m2",
+            "prompt": "What secret lies hidden in the depths of Fungal Hollow?",
+            "answer": "A buried monolith etched with a prophecy of world-ending cataclysms, written in a language only enchanted spores can decipher.",
+            "twist": "The monolith’s runes are alive—reading them aloud awakens a sleep-bound terror."
+        },
+        {
+            "id": "m3",
+            "prompt": "Why do phantom ships sail the Ebonsea on moonless nights?",
+            "answer": "A sorcerer-king once bound souls of drowned sailors, cursed to sail forever among shadow waves.",
+            "twist": "One of those souls still walks among the living, disguised as a charismatic sea captain."
+        },
+        {
+            "id": "m4",
+            "prompt": "What calls the pilgrims to Cloudreach Pass?",
+            "answer": "A silent hymn carried by mountain winds, said to grant visions of the future to those who reach Frostspire Summit.",
+            "twist": "Every vision shown by those winds drains a piece of the seer’s life-essence."
+        }
+    ],
+
+    "npcs": [
+        {
+            "id": "npc1",
+            "name": "Seraphine Astralwind",
+            "role": "High Knight of the Starforged",
+            "description": "Seraphine is a brave and noble champion whose silver-blue armor seems to shimmer with starlight. Born under a comet’s tail, she spent her childhood training under ancient celestial monks, learning to channel meteor-magic through her sword. She believes in preserving justice even when the skies themselves turn dark.",
+            "goal": "Seraphine seeks to uncover the truth behind Starfall Citadel’s strange glow and prevent the artifact’s power from falling into the wrong hands. She also hopes to atone for a past failure when her own mentor was consumed by that same star-energy.",
+            "visual_description": "Seraphine stands over six feet tall, her platinum hair braided with strands of meteor-iron. Her armor is adorned with white-gold filigree and tiny, twinkling gemstones that pulse when she draws near enchanted objects. Her cerulean eyes radiate determination, and a faint halo of shimmering light surrounds her head whenever she channels her sword’s starfire."
+        },
+        {
+            "id": "npc2",
+            "name": "Elarion Willowshade",
+            "role": "Archdruid of the Ivorywood Sentinels",
+            "description": "Elarion is an ancient druid whose body is entwined with living vines and blossoms that shift with the seasons. He speaks in hushed tones, as if the forest itself guides his every word. Legends say he once healed an entire grove with a single song, summoning spirits that cleansed blight from the land.",
+            "goal": "Elarion’s purpose is to protect Ivorywood Forest from ever-encroaching corruption. He also seeks to decipher the lullabies of the Moonlit Glade, hoping they will reveal a way to save his beloved woods from drying up.",
+            "visual_description": "Elarion’s tall frame is draped in robes woven from moss and bark, embroidered with emerald leaves that shift color with his emotions. His eyes are the deep green of ancient oaks, and his long hair is streaked with living tendrils of ivy. Mossy runes glow faintly across his bark-like skin whenever he communes with forest spirits."
+        },
+        {
+            "id": "npc3",
+            "name": "Varric Blackscale",
+            "role": "Warlord of the Obsidian Syndicate",
+            "description": "Varric is a ruthless commander whose obsidian armor is etched with flame-forged runes. He rose from the shattered ramparts of the Obsidian Wastes, forging alliances with mercenaries and warlocks alike. His voice echoes like thunder, and his mere presence silences entire battlefields.",
+            "goal": "Varric aims to seize control of the Broken Rampart and claim its hidden vault of starsteel, believing it will grant him dominion over all of Aurelion. He will stop at nothing to crush any who stand in his way.",
+            "visual_description": "Varric stands broad-shouldered, his black-iron helm crowned with molten-red plumes that flicker like living flame. His obsidian pauldrons are adorned with spiked ridges, and a massive greataxe rests across his back. His eyes glow ember-red whenever he channels war-magic, and his scarred visage is half-hidden behind a battle-worn visor."
+        },
+        {
+            "id": "npc4",
+            "name": "Lyssandra Frostheart",
+            "role": "Skywarden of the Azure Peaks",
+            "description": "Lyssandra is a charismatic sky-knight sworn to protect the mountain passes of Azure Peaks. Raised among the frost-clad monasteries, she learned to ride griffons and summon hail-storms at will. Her laughter is said to be as clear as cracking ice, yet her heart remains warm toward those she calls allies.",
+            "goal": "Lyssandra seeks to discover why Frostspire Summit remains shrouded in perpetual storm and to bring back the sunlight for her people. She will venture into Cloudreach Pass alone if need be, trusting only her griffon.",
+            "visual_description": "Lyssandra wears a frost-blue cloak trimmed with silver, and her armor bears the sigil of a soaring griffon. Her platinum hair is braided with icicles that never melt, and her sky-blue eyes glow when she calls upon her storm magic."
+        },
+        {
+            "id": "npc5",
+            "name": "Captain Ilyas Tideborne",
+            "role": "Master Navigator of the Ebonsea Fleet",
+            "description": "Ilyas is a silver-tongued explorer who commands ships that sail the Ebonsea’s shifting currents. He studied under the Sirens’ lore to learn how to calm sea monsters with melodic chants. His adventurous spirit is tempered by a deep respect for the ocean’s hidden dangers.",
+            "goal": "Ilyas aims to chart the Leviathan’s Perch and unlock the secrets of the shipwrecked relics said to lie there. He knows that one false note could awaken something far more deadly than any storm.",
+            "visual_description": "Ilyas has sun-bronzed skin and hair the color of storm-tossed waves. He wears a billowing coat of cerulean silk lined with pearls, and a bejeweled sextant hangs from his belt. His steely gray eyes seem to hold the memory of every sea he’s ever crossed."
+        }
+    ],
+
+    "player_backstory": {
+        "name": "Alaric Stormwind",
+        "origin_story": "Alaric was born beneath the shimmering auroras over Frostspire Summit, the child of a Skywarden and a mountain healer. From childhood, he trained alongside Lyssandra Frostheart (npc4), learning to ride griffons across icy winds. When Lyssandra vanished during a storm summoned by dark sorcery, Alaric vowed to uncover the truth behind Frostspire’s perpetual blight. In his travels, he encountered Seraphine Astralwind (npc1) and learned of the star-queen’s artifact (m1), forever intertwining his fate with the fate of Aurelion.",
+        "starting_traits": {
+            "bravery": 5,
+            "curiosity": 4,
+            "empathy": 3,
+            "communication": 3,
+            "trust": 2
+        }
+    },
+
+    "plot_outline": {
+        "five_act_plan": [
+            {
+                "act_title": "The Frosted Omen",
+                "inciting_incident": "Alaric witnesses Frostspire Summit crack with thunderous ice, and Lyssandra’s griffon returns wounded without its rider.",
+                "tied_mystery": "m2",
+                "tie_npc": "npc4",
+                "twist": "The imprisoned creature in the Moonlit Glade stirs, freezing nearby forests.",
+                "scenes_count": 12
+            },
+            {
+                "act_title": "Shadows Over Starfall",
+                "inciting_incident": "Alaric meets Seraphine Astralwind (npc1) as she investigates the glowing Starfall Citadel.",
+                "tied_mystery": "m1",
+                "tie_npc": "npc1",
+                "twist": "The star-queen’s soul still lingers, influencing knights to commit acts of vengeance.",
+                "scenes_count": 15
+            },
+            {
+                "act_title": "Symphony of Spores",
+                "inciting_incident": "Alaric ventures into Fungal Hollow alongside Elarion Willowshade (npc2).",
+                "tied_mystery": "m2",
+                "tie_npc": "npc2",
+                "twist": "The prophecy monolith awakens, unleashing a fungus-borne plague.",
+                "scenes_count": 18
+            },
+            {
+                "act_title": "Sea of Glass",
+                "inciting_incident": "Alaric journeys to Leviathan’s Perch with Captain Ilyas Tideborne (npc5).",
+                "tied_mystery": "m3",
+                "tie_npc": "npc5",
+                "twist": "The artifact at the trench is actually a seal binding a primordial leviathan.",
+                "scenes_count": 20
+            },
+            {
+                "act_title": "Celestial Convergence",
+                "inciting_incident": "All five locations’ powers converge during a rare celestial alignment.",
+                "tied_mystery": "m4",
+                "tie_npc": "npc1",
+                "twist": "Lyssandra Frostheart returns as a lich, guiding the alignment to remake Aurelion in ice and shadow.",
+                "scenes_count": 25
+            }
+        ]
+    }
+}
